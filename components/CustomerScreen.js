@@ -17,7 +17,7 @@ export default function CustomerScreen() {
         }
     });
     const onSave = async (data) => {
-        const response = await axios.post(`http://127.0.0.1:3000/api/clientes`,{
+        const response = await axios.post(`http://172.18.61.1:3000/api/clientes`,{
             nombre:data.firstName,
             apellidos:data.lastName
         })
@@ -30,9 +30,9 @@ export default function CustomerScreen() {
     };
 
     const onUpdate= async (data) => {
-        const response = await axios.put(`http://127.0.0.1:3000/api/clientes/${idSearch}`,{
+        const response = await axios.put(`http://172.18.61.1:3000/api/clientes/${idSearch}`,{
             nombre:data.firstName,
-            apellido:data.lastName
+            apellidos:data.lastName
         })
         setIsError(false);
         setMessage("Cliente actualizado correctamente..")
@@ -44,7 +44,7 @@ export default function CustomerScreen() {
     };
 
     const onSearch =async()=>{
-        const response = await axios.get(`http://127.0.0.1:3000/api/clientes/${idSearch}`)
+        const response = await axios.get(`http://172.18.61.1:3000/api/clientes/${idSearch}`)
         if (!response.data.error){
             setValue("firstName", response.data.nombre)
             setValue("lastName", response.data.apellido)
@@ -57,7 +57,7 @@ export default function CustomerScreen() {
 
     const onDelete =async(data)=>{
         if (confirm(`Esta seguro de eliminar este cliente: ${data.firstName} ${data.lastName}?`)){
-            const response = await axios.delete (`http://127.0.0.1:3000/api/clientes/${idSearch}`)
+            const response = await axios.delete (`http://172.18.61.1:3000/api/clientes/${idSearch}`)
             setIsError (false)
             setMessage("El cliente se ha eliminado correctamente")
             setTimeout(()=>{

@@ -8,7 +8,7 @@ export default function Listcustomers() {
   // Metodo para consumir api de tiendabackend a través de axios
   const getClientes = async () => {
     try{
-      const url = `http://127.0.0.1:3000/api/clientes`;
+      const url = `http://172.18.61.1:3000/api/clientes`;
       const response = await axios.get(url);
       setData(response.data)
   
